@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+    <title>疯狂的红包</title>
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+
+</head>
+<body class=" bg-hb">
+    
+    <div class="load-box" id="load-box">0%</div>
+
+    <!-- 手势提醒 -->
+    <div class="hb-pop" id="play_tips_box">
+        <img class="hb-remind guide" src="images/remind.png">
+    </div>
+    
+    <!-- 游戏结束提示结果 -->
+    <div class="hb-jg-box" style="display:none" id="result_box">
+        <div class="hb-jg">
+            <img class="hb1" src="images/hbs.png">
+            <div class="hb-jg-txt"><span class="result_text">你总共拆开了<b id="result_num">0</b>个红包</span><a href="javascript:;" id="playAgain">再玩一次</a></div>
+        </div>
+    </div>
+
+    <img class="hb-i1" src="images/i1.png">
+    <img class="hb-i2" src="images/i2.png">
+    <img class="hb-i3" src="images/i3.png">
+    <img class="hb-i4" src="images/i4.png">
+    <img class="hb-i5" src="images/i5.png">
+    <div class="hb-load">
+        <div class="hb-time"><em>剩余时间：<strong class='countdown' id="timeing-box">等待游戏开始</strong></em></div>
+        <div class="hb-num" id='voucher_status'>
+            <img class="hb-dom p18" src="images/dom-gray.png">
+            <img class="hb-dom p50" src="images/dom-gray.png">
+            <img class="hb-dom p100" src="images/dom-gray.png">
+            <div class="hb-num2 count_num_box" id="progress-box" style="width:0%"></div>
+        </div>
+        <div class="hb-num1">
+            <span class="p18">18</span>
+            <span class="p50">50</span>
+            <span class="p100">100</span>
+        </div>
+    </div>
+    <div class="hb-play-bg" id="hongbao_list">
+        <img class="hb-fly" src="images/hb4.png">
+        <img class="hb-fly" src="images/hb4.png">
+        <img class="hb-fly" src="images/hb4.png">
+        <img class="hb-fly" src="images/hb4.png">
+        <img class="hb-fly" src="images/hb4.png">
+        <img class="hb-fly" src="images/hb4.png">
+        <img class="hb-fly" src="images/hb4.png">
+        <img class="hb-fly" src="images/hb4.png">
+        <img class="hb-fly" src="images/hb4.png">
+        <img class="hb-fly" src="images/hb4.png">
+        <img class="hb-fly" src="images/hb4.png">
+        <img class="hb-fly" src="images/hb4.png">
+        <img class="hb-fly" src="images/hb4.png">
+        <img class="hb-fly" src="images/hb4.png">
+        <img class="hb-fly" src="images/hb4.png">
+        <img class="hb-fly" src="images/hb4.png">
+        <img class="hb-fly" src="images/hb4.png">
+        <img class="hb-fly" src="images/hb4.png">
+        <img class="hb-fly" src="images/hb4.png">
+        <img class="hb-fly" src="images/hb4.png">
+        <img class="hb-play" id="status-box" src="images/hb3.png">
+    </div>
+    
+    <script>
+    (function() {
+        var imgs = document.getElementsByTagName('img'),
+            length = imgs.length,
+            i = 0,
+            count = 0,
+            progress = 0,
+            loadBox = document.getElementById('load-box');
+        for (; i < length; i++) {
+            (function(i) {
+                var img = new Image();
+                img.onload = function() {
+                    progress = Math.ceil(++count / length * 100);
+                    loadBox.innerHTML = progress + "%";
+                    this.onload = null;
+                    if (count === length) {
+                       loadBox.style.display = 'none';
+                    }
+                }
+                img.src = imgs[i].src;
+            })(i);
+        }
+    }());
+    </script>
+    <script type="text/javascript" src="js/require.js" data-main="js/hb" defer async="true" ></script>
+
+</body>
+</html>
